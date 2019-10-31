@@ -48,6 +48,16 @@
 			"@vue/typescript"
 		],
 		"rules": {
+			"comma-dangle": [
+				"error",
+				{
+					"arrays": "only-multiline",
+					"objects": "only-multiline",
+					"imports": "never",
+					"exports": "never",
+					"functions": "only-multiline"
+				}
+			],
 			"indent": [1, "tab"],
 			"no-tabs": 0
 		},
