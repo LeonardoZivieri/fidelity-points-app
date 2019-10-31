@@ -16,19 +16,19 @@
 		</v-app-bar>
 
 		<v-content>
-			<HelloWorld/>
 		</v-content>
 	</v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import { mapState } from 'vuex'
+import firebase from './firebase'
 
 export default Vue.extend({
 	name: 'App',
-	components: {
-		HelloWorld
+	mounted: function () {
+		this.$store.dispatch('init')
 	},
 	data: () => ({
 		//
