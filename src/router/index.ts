@@ -2,6 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
+import GuestGuard from './guards/guest'
+import LoggedGuard from './guards/logged'
+
 import Loading from '../plugins/loading'
 
 Vue.use(VueRouter)
