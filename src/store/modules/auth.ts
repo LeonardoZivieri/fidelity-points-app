@@ -7,7 +7,6 @@ import State from '../models/State'
 
 const actions: ActionTree<State, State> = {
 	async authLoad ({ commit }) {
-		auth().setPersistence
 		auth().onAuthStateChanged((user) => {
 			commit('AUTH_USER_CHANGED', user)
 		})
