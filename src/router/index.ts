@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
+import Loading from '../plugins/loading'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -24,6 +26,14 @@ const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes
+})
+
+router.beforeEach((to, from, next) => {
+	Loading.show()
+	next()
+})
+router.afterEach(() => {
+	Loading.hide()
 })
 
 export default router
