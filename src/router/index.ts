@@ -12,7 +12,13 @@ const routes = [
 	{
 		path: '/app',
 		name: 'app',
-		component: () => import('../views/App.vue')
+		component: () => import('../views/App.vue'),
+		children: [
+			{
+				path: '',
+				component: () => import('../views/AppChilds/Index.vue')
+			}
+		]
 	},
 	{
 		path: '*',
