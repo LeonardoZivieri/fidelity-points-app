@@ -12,7 +12,7 @@
 		</template>
 
 		<template v-slot:actions>
-			<v-btn block="true" color="primary">Login</v-btn>
+			<v-btn block color="primary" @click="login">Login</v-btn>
 		</template>
 	</LayoutCentered>
 </template>
@@ -25,6 +25,11 @@ export default {
 	name: 'home',
 	components: {
 		LayoutCentered
+	},
+	methods: {
+		login () {
+			this.$router.push('app')
+		}
 	}
 }
 </script>
