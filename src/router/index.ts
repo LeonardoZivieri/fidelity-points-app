@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { RouteConfig } from 'vue-router/types'
 
 Vue.use(VueRouter)
 
-const routes = [
+const routes: RouteConfig[] = [
 	{
 		path: '/login',
 		name: 'login',
