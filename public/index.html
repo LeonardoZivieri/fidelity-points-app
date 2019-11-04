@@ -6,13 +6,93 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<link rel="icon" href="<%= BASE_URL %>favicon.ico">
 		<title>app-unhas</title>
+
+		<style>
+			body[loading=on] #loading {
+				z-index: 100;
+				width: 100vw;
+				height: 100vh;
+				position: fixed;
+				top: 0;
+				left: 0;
+				background-color: #1697f6;
+			}
+			body[loading=on] #loading > div {
+				top: calc(45% - 2em - 44px);
+			}
+			body[loading=on] #loading > div,
+			body[loading=on] #loading > div:before,
+			body[loading=on] #loading > div:after {
+				background: #000000;
+				-webkit-animation: load1 1s infinite ease-in-out;
+				animation: load1 1s infinite ease-in-out;
+				width: 1em;
+				height: 4em;
+			}
+			body[loading=on] #loading > div {
+				color: #000000;
+				text-indent: -9999em;
+				margin: 88px auto;
+				position: relative;
+				font-size: 11px;
+				-webkit-transform: translateZ(0);
+				-ms-transform: translateZ(0);
+				transform: translateZ(0);
+				-webkit-animation-delay: -0.16s;
+				animation-delay: -0.16s;
+			}
+			body[loading=on] #loading > div:before,
+			body[loading=on] #loading > div:after {
+				position: absolute;
+				top: 0;
+				content: '';
+			}
+			body[loading=on] #loading > div:before {
+				left: -1.5em;
+				-webkit-animation-delay: -0.32s;
+				animation-delay: -0.32s;
+			}
+			body[loading=on] #loading > div:after {
+				left: 1.5em;
+			}
+			@-webkit-keyframes load1 {
+				0%,
+				80%,
+				100% {
+					box-shadow: 0 0;
+					height: 4em;
+				}
+				40% {
+					box-shadow: 0 -2em;
+					height: 5em;
+				}
+			}
+			@keyframes load1 {
+				0%,
+				80%,
+				100% {
+					box-shadow: 0 0;
+					height: 4em;
+				}
+				40% {
+					box-shadow: 0 -2em;
+					height: 5em;
+				}
+			}
+		</style>
+
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
 	</head>
-	<body>
+	<body loading="on">
 		<noscript>
 			<strong>We're sorry but app-unhas doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
 		</noscript>
+
+		<div id="loading">
+			<div></div>
+		</div>
+
 		<div id="app"></div>
 		<!-- built files will be auto injected -->
 	</body>

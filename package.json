@@ -9,6 +9,7 @@
 	},
 	"dependencies": {
 		"core-js": "^3.3.2",
+		"firebase": "^7.2.2",
 		"register-service-worker": "^1.6.2",
 		"vue": "^2.6.10",
 		"vue-class-component": "^7.0.2",
@@ -47,6 +48,16 @@
 			"@vue/typescript"
 		],
 		"rules": {
+			"comma-dangle": [
+				"error",
+				{
+					"arrays": "only-multiline",
+					"objects": "only-multiline",
+					"imports": "never",
+					"exports": "never",
+					"functions": "only-multiline"
+				}
+			],
 			"indent": [1, "tab"],
 			"no-tabs": 0
 		},

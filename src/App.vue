@@ -9,10 +9,11 @@ import Vue from 'vue'
 
 export default Vue.extend({
 	name: 'App',
-	components: {
+	mounted: function () {
+		this.$store.dispatch('init')
 	},
 	data: () => ({
 		//
-	})
+	}),
 })
 </script>
