@@ -18,6 +18,8 @@ firebase.initializeApp({
 
 Vue.config.productionTip = false
 
+Vue.component('menu-icon', import('vue-material-design-icons/Menu.vue'))
+
 new Vue({
 	router,
 	store,

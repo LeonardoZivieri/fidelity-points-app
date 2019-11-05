@@ -13,6 +13,7 @@
 		"register-service-worker": "^1.6.2",
 		"vue": "^2.6.10",
 		"vue-class-component": "^7.0.2",
+		"vue-material-design-icons": "^4.1.0",
 		"vue-property-decorator": "^8.3.0",
 		"vue-router": "^3.1.3",
 		"vuetify": "^2.1.0",
@@ -58,7 +59,10 @@
 					"functions": "only-multiline"
 				}
 			],
-			"indent": [1, "tab"],
+			"indent": [
+				1,
+				"tab"
+			],
 			"no-tabs": 0
 		},
 		"parserOptions": {
