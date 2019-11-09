@@ -25,6 +25,10 @@ const routes: RouteConfig[] = [
 			{
 				path: '',
 				component: () => import('../views/AppChilds/Index.vue')
+			},
+			{
+				path: 'fidelity-points',
+				component: () => import('../views/AppChilds/FidelityPoints.vue')
 			}
 		]
 	},
