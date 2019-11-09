@@ -19,7 +19,7 @@ const actions: ActionTree<State, State> = {
 		store.commit('AUTH_USER_CHANGED', user)
 	},
 	async authLogout () {
-		return auth().signOut()
+		return await auth().signOut()
 	},
 }
 
