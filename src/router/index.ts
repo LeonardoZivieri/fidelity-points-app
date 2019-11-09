@@ -13,11 +13,13 @@ const routes: RouteConfig[] = [
 	{
 		path: '/login',
 		name: 'login',
+		beforeEnter: GuestGuard,
 		component: () => import('../views/Login.vue')
 	},
 	{
 		path: '/app',
 		name: 'app',
+		beforeEnter: LoggedGuard,
 		component: () => import('../views/App.vue'),
 		children: [
 			{
