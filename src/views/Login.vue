@@ -6,8 +6,8 @@
 
 		<template v-slot:default>
 			<v-form>
-				<v-text-field label="Login" v-model="userLogin" name="login" type="text"></v-text-field>
-				<v-text-field label="Password" v-model="userPassword" name="password" type="password"></v-text-field>
+				<v-text-field label="Login" v-model="userLogin" name="login" type="text" @keyup.enter="login"/>
+				<v-text-field label="Password" v-model="userPassword" name="password" type="password" @keyup.enter="login"/>
 				<v-alert dense outlined color="red" v-if="error">{{error}}</v-alert>
 			</v-form>
 		</template>
