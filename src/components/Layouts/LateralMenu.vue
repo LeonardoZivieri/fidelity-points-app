@@ -26,6 +26,17 @@
 						<v-list-item-title>Contact</v-list-item-title>
 					</v-list-item-content>
 				</v-list-item>
+
+				<hr class="mx-4 my-2">
+
+				<v-list-item @click="logout">
+					<v-list-item-action>
+						<v-icon>power_off</v-icon>
+					</v-list-item-action>
+					<v-list-item-content>
+						<v-list-item-title>Logout</v-list-item-title>
+					</v-list-item-content>
+				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
 
@@ -55,6 +66,10 @@ export default Vue.extend({
 	methods: {
 		alert (message:string) {
 			window.alert(message)
+		},
+		logout () {
+			this.$store.dispatch('authLogout')
+				.then(() => this.$router.push({ name: 'login' }))
 		}
 	}
 })

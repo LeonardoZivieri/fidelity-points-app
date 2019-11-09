@@ -20,9 +20,17 @@ Vue.config.productionTip = false
 
 Vue.component('menu-icon', import('vue-material-design-icons/Menu.vue'))
 
-new Vue({
-	router,
-	store,
-	vuetify,
-	render: h => h(App),
-}).$mount('#app')
+let vue: Vue;
+
+firebase.auth().onAuthStateChanged((user) => {
+	if (vue) {
+		return
+	}
+	vue = new Vue({
+		el: '#app',
+		router,
+		store,
+		vuetify,
+		render: h => h(App),
+	})
+})
