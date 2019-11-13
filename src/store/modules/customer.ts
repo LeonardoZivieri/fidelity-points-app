@@ -4,8 +4,38 @@ import { firestore } from 'firebase'
 import { Module, ActionTree } from 'vuex'
 
 import State from '../models/State'
+import Customer from '../models/Customer'
+
 const actions: ActionTree<State, State> = {
 	async customerConsult ( {}, customerDocument ) {
+		if ( this.state.user ) {
+			console.log({
+				'displayName': this.state.user.displayName,
+				'email': this.state.user.email,
+				'emailVerified': this.state.user.emailVerified,
+				'isAnonymous': this.state.user.isAnonymous,
+				'metadata': this.state.user.metadata,
+				'phoneNumber': this.state.user.phoneNumber,
+				'photoURL': this.state.user.photoURL,
+				'providerData': this.state.user.providerData,
+				'providerId': this.state.user.providerId,
+				'refreshToken': this.state.user.refreshToken,
+				'tenantId': this.state.user.tenantId,
+				'uid': this.state.user.uid,
+			})
+			let doc = await firestore()
+				.collection("clients").doc(this.state.user.uid)
+				.collection('client').doc(customerDocument).get();
+
+			let data:firestore.DocumentData|undefined = undefined
+
+			if ( doc && doc.exists ) {
+				data = doc.data();
+			}
+
+			return Customer.fromFirestore(customerDocument, data)
+		}
+	},
 	},
 }
 
