@@ -36,6 +36,17 @@ const actions: ActionTree<State, State> = {
 			return Customer.fromFirestore(customerDocument, data)
 		}
 	},
+	async customerSave ( {}, customer: Customer ) {
+		if ( this.state.user ) {
+			let data = Customer.toFirestore( customer );
+			return await
+				firestore()
+				.collection("clients")
+				.doc(this.state.user.uid)
+				.collection('client')
+				.doc(data.index)
+				.set(data.data);
+		}
 	},
 }
 

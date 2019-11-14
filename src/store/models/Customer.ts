@@ -60,4 +60,16 @@ export default class Customer {
 
 		return client
 	}
+
+	static toFirestore( data: Customer ) {
+		return {
+			index: data.document,
+			data: {
+				'name': data.name,
+				'email': data.email,
+				'birthday': data.birthday,
+			},
+		}
+	}
+
 }
