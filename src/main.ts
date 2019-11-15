@@ -23,7 +23,7 @@ Vue.config.productionTip = false
 
 Vue.component('menu-icon', import('vue-material-design-icons/Menu.vue'))
 
-let vue: Vue;
+let vue: Vue
 
 firebase.auth().onAuthStateChanged((user) => {
 	if (vue) {

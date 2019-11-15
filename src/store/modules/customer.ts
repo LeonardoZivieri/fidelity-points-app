@@ -7,8 +7,8 @@ import State from '../models/State'
 import Customer from '../models/Customer'
 
 const actions: ActionTree<State, State> = {
-	async customerConsult ( {}, customerDocument ) {
-		if ( this.state.user ) {
+	async customerConsult ({ commit }, customerDocument) {
+		if (this.state.user) {
 			console.log({
 				'displayName': this.state.user.displayName,
 				'email': this.state.user.email,
@@ -24,28 +24,27 @@ const actions: ActionTree<State, State> = {
 				'uid': this.state.user.uid,
 			})
 			let doc = await firestore()
-				.collection("clients").doc(this.state.user.uid)
-				.collection('client').doc(customerDocument).get();
+				.collection('clients').doc(this.state.user.uid)
+				.collection('client').doc(customerDocument).get()
 
-			let data:firestore.DocumentData|undefined = undefined
+			let data:firestore.DocumentData|undefined
 
-			if ( doc && doc.exists ) {
-				data = doc.data();
+			if (doc && doc.exists) {
+				data = doc.data()
 			}
 
 			return Customer.fromFirestore(customerDocument, data)
 		}
 	},
-	async customerSave ( {}, customer: Customer ) {
-		if ( this.state.user ) {
-			let data = Customer.toFirestore( customer );
-			return await
-				firestore()
-				.collection("clients")
+	async customerSave ({ commit }, customer: Customer) {
+		if (this.state.user) {
+			let data = Customer.toFirestore(customer)
+			return firestore()
+				.collection('clients')
 				.doc(this.state.user.uid)
 				.collection('client')
 				.doc(data.index)
-				.set(data.data);
+				.set(data.data)
 		}
 	},
 }
