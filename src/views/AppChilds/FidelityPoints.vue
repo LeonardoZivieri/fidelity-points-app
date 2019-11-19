@@ -91,11 +91,33 @@
 						<v-btn block color="secondary" @click="screen='search'">Procurar outro cliente</v-btn>
 					</v-col>
 				</v-row>
-				<v-row>
-					<v-col cols="12" md="6" class="py-1">
-						<v-btn block color="secondary" @click="screen='info'">Voltar</v-btn>
-					</v-col>
-				</v-row>
+				<v-form
+						v-if="screen == 'registry'"
+						v-model="registryForm.valid"
+						ref="registryForm"
+					>
+					<v-row>
+						<v-col cols="12">
+							<v-textarea
+									v-model="registryForm.comment"
+									label="Comentário"
+									auto-grow
+									:rows="2"
+									:rules="[(v) => !!v || 'Comentário obrigatorio']"
+									counter="200"
+								/>
+						</v-col>
+						<v-col cols="12">
+							<InputPoints v-model="registryForm.points"/>
+						</v-col>
+						<v-col cols="12" md="6" class="py-1">
+							<v-btn block color="primary" @click="registry()">Registrar</v-btn>
+						</v-col>
+						<v-col cols="12" md="6" class="py-1">
+							<v-btn block color="secondary" @click="screen='info'">Voltar</v-btn>
+						</v-col>
+					</v-row>
+				</v-form>
 				<v-row v-if="screen == 'history'">
 					<v-col cols="12" class="py-1">
 						<v-btn block color="secondary" @click="screen='info'">Voltar</v-btn>
@@ -184,15 +206,25 @@
 <script>
 import { firestore } from 'firebase'
 
+import InputPoints from '@/components/Form/InputPoints'
+
 export default {
 	name: 'AppIndex',
+	components: {
+		InputPoints
+	},
 	data () {
 		return {
 			screen: 'search',
 			cpf: '',
 			client: null,
 			loading: false,
-			dataNascimento: ''
+			dataNascimento: '',
+			registryForm: {
+				valid: false,
+				comment: '',
+				points: 0,
+			}
 		}
 	},
 	watch: {
@@ -255,6 +287,9 @@ export default {
 			await this.$store.dispatch('customerSave', this.client)
 			this.loading = false
 			this.screen = 'info'
+		},
+		async registry () {
+			console.log(this.registryForm)
 		}
 	}
 }
