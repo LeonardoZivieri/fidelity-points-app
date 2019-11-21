@@ -289,7 +289,18 @@ export default {
 			this.screen = 'info'
 		},
 		async registry () {
-			console.log(this.registryForm)
+			this.screen = 'loading'
+			this.loading = true
+			await this.$store.dispatch(
+				'customerRegistryHistory',
+				{
+					customer: this.client,
+					comment: this.registryForm.comment,
+					points: this.registryForm.points
+				}
+			)
+			this.loading = false
+			this.screen = 'info'
 		}
 	}
 }

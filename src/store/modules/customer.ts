@@ -5,6 +5,7 @@ import { Module, ActionTree } from 'vuex'
 
 import State from '../models/State'
 import Customer from '../models/Customer'
+import CustomerHistory from '../models/CustomerHistory'
 
 const actions: ActionTree<State, State> = {
 	async customerConsult ({ commit }, customerDocument) {
@@ -45,6 +46,19 @@ const actions: ActionTree<State, State> = {
 				.collection('client')
 				.doc(data.index)
 				.set(data.data)
+		}
+	},
+	async customerRegistryHistory ({ commit }, { customer, comment, points }: {customer:Customer, comment:string, points:number}) {
+		if (this.state.user) {
+			console.log({ customer, comment, points })
+			let data = CustomerHistory.toFirestore(new CustomerHistory( comment, points ))
+			return await firestore()
+				.collection('clients')
+				.doc(this.state.user.uid)
+				.collection('history')
+				.doc(customer.getDocument())
+				.collection('story')
+				.add(data)
 		}
 	},
 }
