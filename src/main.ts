@@ -3,6 +3,7 @@ import App from './App.vue'
 
 import './registerServiceWorker'
 import './plugins/vue-the-mask'
+import './plugins/vue-moment'
 
 import router from './router'
 import store from './store'

@@ -12,7 +12,7 @@
 					</thead>
 					<tbody>
 						<tr v-for="history in histories" :key="history.id">
-							<td class="text-center"> {{ history.date }} </td>
+							<td class="text-center"> {{ history.date | moment('from', 'now') }} </td>
 							<td class="text-center"> {{ history.comment }} </td>
 							<td class="text-center"> {{ history.point }} </td>
 						</tr>
