@@ -7,6 +7,7 @@ export default class CustomerHistory {
 	private _id:string = '';
 	private _comment:string = '';
 	private _point:number = 0;
+	private _date:Date|null = null;
 
 	constructor( comment:string = '', point:number = 0 ) {
 		this._comment = comment;
@@ -59,6 +60,19 @@ export default class CustomerHistory {
 		this._point = point
 	}
 
+	get date (): Date|null {
+		return this._date
+	}
+	set date (date:Date|null) {
+		this.setDate(date)
+	}
+	public getDate ():Date|null {
+		return this._date
+	}
+	public setDate (date:Date|null) {
+		this._date = date
+	}
+
 	static fromFirestore (document:string, data: DocumentData|undefined) : CustomerHistory {
 		let client = new CustomerHistory()
 
@@ -70,6 +84,7 @@ export default class CustomerHistory {
 		client._id = document;
 		client.setComment(data.comment)
 		client.setPoint(data.point)
+		client.setDate(new Date(data.data))
 
 		return client
 	}
