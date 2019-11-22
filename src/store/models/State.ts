@@ -1,5 +1,6 @@
 
 import { User } from 'firebase'
+import Customer from './Customer'
 
 export default class State {
 	constructor (obj: {
@@ -12,4 +13,7 @@ export default class State {
 
 	user: User|null;
 	logged: boolean|undefined;
+
+	fpLoading: boolean = false;
+	fpCustomer: Customer|null = null;
 }
