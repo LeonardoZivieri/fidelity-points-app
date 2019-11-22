@@ -51,8 +51,8 @@ const actions: ActionTree<State, State> = {
 	async customerRegistryHistory ({ commit }, { customer, comment, points }: {customer:Customer, comment:string, points:number}) {
 		if (this.state.user) {
 			console.log({ customer, comment, points })
-			let data = CustomerHistory.toFirestore(new CustomerHistory( comment, points ))
-			return await firestore()
+			let data = CustomerHistory.toFirestore(new CustomerHistory(comment, points))
+			return firestore()
 				.collection('clients')
 				.doc(this.state.user.uid)
 				.collection('history')

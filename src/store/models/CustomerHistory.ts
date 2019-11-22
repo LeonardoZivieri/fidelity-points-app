@@ -9,9 +9,9 @@ export default class CustomerHistory {
 	private _point:number = 0;
 	private _date:Date|null = null;
 
-	constructor( comment:string = '', point:number = 0 ) {
-		this._comment = comment;
-		this._point = point;
+	constructor (comment:string = '', point:number = 0) {
+		this._comment = comment
+		this._point = point
 	}
 
 	get saved (): boolean {
@@ -81,7 +81,7 @@ export default class CustomerHistory {
 		}
 
 		client.setSaved(true)
-		client._id = document;
+		client._id = document
 		client.setComment(data.comment)
 		client.setPoint(data.point)
 		client.setDate(new Date(data.data))

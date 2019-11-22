@@ -9,22 +9,21 @@ import CustomerHistory from '../models/CustomerHistory'
 
 const customerModule: Module<State, State> = {
 	getters: {
-		fidelityPointsLoading( store, getters, {fpLoading} ) {
+		fidelityPointsLoading (store, getters, { fpLoading }) {
 			console.log('fidelityPointsLoading: ', fpLoading)
-			return fpLoading;
+			return fpLoading
 		},
-		fidelityPointsCustomer( store, getters, {fpCustomer} ) {
+		fidelityPointsCustomer (store, getters, { fpCustomer }) {
 			console.log('fidelityPointsCustomer: ', fpCustomer)
-			return fpCustomer;
+			return fpCustomer
 		},
-		fidelityPointsCustomerGetCustomerHistory( store, getters, {fpCustomer,user} ) {
-			return async ( from: number = 0, to: number = 10 ) => {
+		fidelityPointsCustomerGetCustomerHistory (store, getters, { fpCustomer, user }) {
+			return async (from: number = 0, to: number = 10) => {
+				let history: CustomerHistory[] = []
 
-				let history: CustomerHistory[] = [];
-
-				if ( user && fpCustomer ) {
+				if (user && fpCustomer) {
 					let doc = await
-						firestore()
+					firestore()
 						.collection('clients')
 						.doc(user.uid)
 						.collection('history')
@@ -33,25 +32,25 @@ const customerModule: Module<State, State> = {
 						.orderBy('data', 'desc')
 						.get()
 
-					if ( !doc.empty ) {
-						doc.forEach(function(result) {
+					if (!doc.empty) {
+						doc.forEach(function (result) {
 							console.log(result.data())
-							history.push( CustomerHistory.fromFirestore( result.id, result.data() ) )
+							history.push(CustomerHistory.fromFirestore(result.id, result.data()))
 						})
 					}
 				}
 
-				return history;
+				return history
 			}
 		}
 	},
 	mutations: {
-		fidelityPointsSetLoading( store, newLoadingState ) {
-			let state:any = this.state;
+		fidelityPointsSetLoading (store, newLoadingState) {
+			let state:any = this.state
 			state.fpLoading = newLoadingState
 		},
-		fidelityPointsSetCustomer( store, newCustomerState ) {
-			let state:any = this.state;
+		fidelityPointsSetCustomer (store, newCustomerState) {
+			let state:any = this.state
 			state.fpCustomer = newCustomerState
 		},
 	}
