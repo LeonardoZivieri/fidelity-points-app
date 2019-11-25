@@ -6,7 +6,7 @@
 					sm="8" offset-sm="2"
 					md="6" offset-md="3"
 				>
-				<v-row v-if="loading">
+				<v-row v-show="loading">
 					<v-col style="text-align: center">
 						<v-progress-circular
 								:size="50"
@@ -16,7 +16,7 @@
 							/>
 					</v-col>
 				</v-row>
-				<router-view v-else/>
+				<router-view v-show="!loading"/>
 			</v-col>
 		</v-row>
 	</v-container>
