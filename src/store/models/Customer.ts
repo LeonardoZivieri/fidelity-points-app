@@ -8,6 +8,7 @@ export default class Customer {
 	private _name:string = '';
 	private _email:string = '';
 	private _birthday:number = 0;
+	private _score:number = 0;
 
 	get saved (): boolean {
 		return this._saved
@@ -86,6 +87,19 @@ export default class Customer {
 		return new Date(this._birthday)
 	}
 
+	get score (): number {
+		return this._score
+	}
+	set score (date:number) {
+		this.setBirthday(date)
+	}
+	public getScore ():number {
+		return this._score
+	}
+	public setScore (score:number) {
+		this._score = score || 0
+	}
+
 	static fromFirestore (document:string, data: DocumentData|undefined) : Customer {
 		let client = new Customer()
 
@@ -98,6 +112,7 @@ export default class Customer {
 		client.setName(data.name)
 		client.setEmail(data.email)
 		client.setBirthday(data.birthday)
+		client.setScore(data.score)
 
 		return client
 	}
@@ -109,6 +124,7 @@ export default class Customer {
 				'name': data.name,
 				'email': data.email,
 				'birthday': data.birthday,
+				'score': data.score,
 			},
 		}
 	}
