@@ -3,6 +3,7 @@ import App from './App.vue'
 
 import './registerServiceWorker'
 import './plugins/vue-the-mask'
+import './plugins/vue-moment'
 
 import router from './router'
 import store from './store'
@@ -23,7 +24,7 @@ Vue.config.productionTip = false
 
 Vue.component('menu-icon', import('vue-material-design-icons/Menu.vue'))
 
-let vue: Vue;
+let vue: Vue
 
 firebase.auth().onAuthStateChanged((user) => {
 	if (vue) {
