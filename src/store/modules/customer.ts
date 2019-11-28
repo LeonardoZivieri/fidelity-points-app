@@ -53,8 +53,8 @@ const actions: ActionTree<State, State> = {
 			console.log({ customer, comment, points })
 			let data = CustomerHistory.toFirestore(new CustomerHistory(comment, points))
 
-			customer.setScore( customer.getScore() + points )
-			dispatch( 'customerSave', customer )
+			customer.setScore(customer.getScore() + points)
+			dispatch('customerSave', customer)
 
 			return firestore()
 				.collection('clients')
