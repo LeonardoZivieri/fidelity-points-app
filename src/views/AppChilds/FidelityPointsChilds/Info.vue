@@ -7,6 +7,9 @@
 			<h3 class="text-center">Documento {{customer.getDocumentFormatted()}}</h3>
 		</v-col>
 		<v-col cols="12" class="py-1">
+			<h3 class="text-center">Pontuação {{customer.getScore()}}</h3>
+		</v-col>
+		<v-col cols="12" class="py-1">
 			<v-btn block color="primary" :to="{name: routeBase+'.edit'}">Editar</v-btn>
 		</v-col>
 		<v-col cols="12" class="py-1">
