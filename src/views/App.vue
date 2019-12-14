@@ -1,0 +1,24 @@
+<template>
+	<AppLayout>
+		<template v-slot:title>
+			App do Zivieri
+		</template>
+
+		<template v-slot:default>
+			<router-view/>
+		</template>
+	</AppLayout>
+</template>
+
+<script>
+import AppLayout from '@/components/Layouts/LateralMenu.vue'
+
+export default {
+	name: 'home',
+	components: {
+		AppLayout
+	},
+	methods: {
+	}
+}
+</script>
