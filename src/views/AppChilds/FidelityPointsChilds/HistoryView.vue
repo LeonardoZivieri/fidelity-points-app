@@ -1,24 +1,19 @@
 <template>
 	<v-row v-if="this.customer !== null">
 		<v-col cols="12" class="py-1">
-			<v-simple-table>
-				<template v-slot:default>
-					<thead>
-						<tr>
-							<th class="text-center">Horario</th>
-							<th class="text-center">Comentario</th>
-							<th class="text-center">Pontos</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr v-for="history in histories" :key="history.id">
-							<td class="text-center"> {{ history.date | moment('from', 'now') }} </td>
-							<td class="text-center"> {{ history.comment }} </td>
-							<td class="text-center"> {{ history.point }} </td>
-						</tr>
-					</tbody>
+			<v-data-table
+					:headers="headers"
+					:items="histories"
+					:items-per-page="5"
+					class="elevation-1"
+				>
+				<template v-slot:item.date="{ item }">
+					{{ item.date | moment('from', 'now') }}
 				</template>
-			</v-simple-table>
+				<template v-slot:item.point="{ item }">
+					<span :class="{'red--text': item.point<0}"> {{ item.point }} </span>
+				</template>
+			</v-data-table>
 		</v-col>
 		<v-col cols="12" class="py-1">
 			<v-btn block color="secondary" :to="{name:routeBase+'.info'}">Voltar</v-btn>
@@ -37,6 +32,11 @@ export default {
 	data: () => ({
 		routeBase: 'app.fidelity-points',
 		histories: [],
+		headers: [
+			{ text: 'Horário', align: 'center', value: 'date' },
+			{ text: 'Comentário', align: 'center', value: 'comment' },
+			{ text: 'Pontos', align: 'center', value: 'point' },
+		],
 	}),
 	mounted () {
 		if (this.customer === null) {
