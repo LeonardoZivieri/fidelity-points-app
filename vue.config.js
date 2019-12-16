@@ -5,8 +5,8 @@ module.exports = {
 	],
 	'pwa': {
 		'name': 'App Fidelidade',
-		'themeColor': '#4DBA87',
-		'msTileColor': '#000000',
+		'themeColor': '#3f51b5',
+		'msTileColor': '#FFFFFF',
 		'appleMobileWebAppCapable': 'yes'
 	}
 }
