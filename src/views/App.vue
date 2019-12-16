@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import AppLayout from '@/components/Layouts/LateralMenu.vue'
+import AppLayout from '@/components/Layouts/MenuBarBottom.vue'
 
 export default {
 	name: 'home',
