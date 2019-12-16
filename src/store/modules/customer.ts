@@ -8,25 +8,11 @@ import Customer from '../models/Customer'
 import CustomerHistory from '../models/CustomerHistory'
 
 const actions: ActionTree<State, State> = {
-	async customerConsult ({ commit }, customerDocument) {
+	async customerConsult ({}, customerTelephone) {
 		if (this.state.user) {
-			console.log({
-				'displayName': this.state.user.displayName,
-				'email': this.state.user.email,
-				'emailVerified': this.state.user.emailVerified,
-				'isAnonymous': this.state.user.isAnonymous,
-				'metadata': this.state.user.metadata,
-				'phoneNumber': this.state.user.phoneNumber,
-				'photoURL': this.state.user.photoURL,
-				'providerData': this.state.user.providerData,
-				'providerId': this.state.user.providerId,
-				'refreshToken': this.state.user.refreshToken,
-				'tenantId': this.state.user.tenantId,
-				'uid': this.state.user.uid,
-			})
 			let doc = await firestore()
 				.collection('clients').doc(this.state.user.uid)
-				.collection('client').doc(customerDocument).get()
+				.collection('client').doc(customerTelephone).get()
 
 			let data:firestore.DocumentData|undefined
 
@@ -34,10 +20,10 @@ const actions: ActionTree<State, State> = {
 				data = doc.data()
 			}
 
-			return Customer.fromFirestore(customerDocument, data)
+			return Customer.fromFirestore(customerTelephone, data)
 		}
 	},
-	async customerSave ({ commit }, customer: Customer) {
+	async customerSave ({}, customer: Customer) {
 		if (this.state.user) {
 			let data = Customer.toFirestore(customer)
 			return firestore()
@@ -60,7 +46,7 @@ const actions: ActionTree<State, State> = {
 				.collection('clients')
 				.doc(this.state.user.uid)
 				.collection('history')
-				.doc(customer.getDocument())
+				.doc(customer.getTelephone())
 				.collection('story')
 				.add(data)
 		}

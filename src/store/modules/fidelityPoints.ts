@@ -27,7 +27,7 @@ const customerModule: Module<State, State> = {
 						.collection('clients')
 						.doc(user.uid)
 						.collection('history')
-						.doc(fpCustomer.getDocument())
+						.doc(fpCustomer.getTelephone())
 						.collection('story')
 						.orderBy('data', 'desc')
 						.get()
