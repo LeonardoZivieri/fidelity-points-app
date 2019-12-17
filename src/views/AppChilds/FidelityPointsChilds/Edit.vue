@@ -49,7 +49,6 @@ import { mapGetters } from 'vuex'
 import InputPoints from '@/components/Form/InputPoints'
 
 export default {
-	name: 'AppFidelityPointsSearch',
 	data: () => ({
 		routeBase: 'app.fidelity-points',
 		form: {

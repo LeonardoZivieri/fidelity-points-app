@@ -34,7 +34,6 @@ import { mapGetters } from 'vuex'
 import InputPoints from '@/components/Form/InputPoints'
 
 export default {
-	name: 'AppFidelityPointsHistoryRegister',
 	components: {
 		InputPoints
 	},

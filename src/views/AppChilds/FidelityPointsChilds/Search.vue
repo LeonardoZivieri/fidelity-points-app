@@ -22,7 +22,6 @@ import { firestore } from 'firebase'
 import InputPoints from '@/components/Form/InputPoints'
 
 export default {
-	name: 'AppFidelityPointsSearch',
 	data () {
 		return {
 			telefone: '',

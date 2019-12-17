@@ -28,7 +28,6 @@ import { mapGetters } from 'vuex'
 import InputPoints from '@/components/Form/InputPoints'
 
 export default {
-	name: 'AppFidelityPointsHistoryView',
 	data: () => ({
 		routeBase: 'app.fidelity-points',
 		histories: [],

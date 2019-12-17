@@ -29,7 +29,6 @@ import { firestore } from 'firebase'
 import { mapGetters } from 'vuex'
 
 export default {
-	name: 'AppFidelityPointsInfo',
 	data: () => ({
 		routeBase: 'app.fidelity-points'
 	}),
