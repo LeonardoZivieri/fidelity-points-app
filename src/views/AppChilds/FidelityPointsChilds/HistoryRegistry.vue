@@ -18,7 +18,7 @@
 			<v-col cols="12">
 				<InputPoints v-model="registryForm.points"/>
 			</v-col>
-			<v-col cols="12" md="6" class="py-1">
+			<v-col cols="12" md="6" class="py-1 order-md-last">
 				<v-btn block color="primary" @click="registry()">Registrar</v-btn>
 			</v-col>
 			<v-col cols="12" md="6" class="py-1">

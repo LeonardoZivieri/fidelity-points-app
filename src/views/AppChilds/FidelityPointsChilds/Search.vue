@@ -10,6 +10,9 @@
 					@keyup.enter="search"
 				/>
 		</v-col>
+		<v-col cols="12" class="py-1">
+			<v-btn block color="primary" @click="search">Procurar</v-btn>
+		</v-col>
 	</v-row>
 </template>
 
