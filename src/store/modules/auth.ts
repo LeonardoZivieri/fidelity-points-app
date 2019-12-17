@@ -26,7 +26,7 @@ const actions: ActionTree<State, State> = {
 const authModule: Module<State, State> = {
 	actions: actions,
 	mutations: {
-		'AUTH_USER_CHANGED' (store, user: User) {
+		'AUTH_USER_CHANGED' ({}, user: User) {
 			Vue.set(this.state, 'user', user)
 			Vue.set(this.state, 'logged', !!user)
 		}

@@ -34,7 +34,7 @@ const actions: ActionTree<State, State> = {
 				.set(data.data)
 		}
 	},
-	async customerRegistryHistory ({ commit, dispatch }, { customer, comment, points }: {customer:Customer, comment:string, points:number}) {
+	async customerRegistryHistory ({ dispatch }, { customer, comment, points }: {customer:Customer, comment:string, points:number}) {
 		if (this.state.user) {
 			console.log({ customer, comment, points })
 			let data = CustomerHistory.toFirestore(new CustomerHistory(comment, points))

@@ -7,7 +7,7 @@ import './plugins/vue-moment'
 
 import router from './router'
 import store from './store'
-import firebase from './firebase'
+import firebase from 'firebase'
 import vuetify from './plugins/vuetify'
 
 firebase.initializeApp({
@@ -26,7 +26,7 @@ Vue.component('menu-icon', import('vue-material-design-icons/Menu.vue'))
 
 let vue: Vue
 
-firebase.auth().onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged(() => {
 	if (vue) {
 		return
 	}
