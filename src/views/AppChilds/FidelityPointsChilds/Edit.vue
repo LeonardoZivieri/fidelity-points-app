@@ -33,23 +33,21 @@
 					counter="100"
 				/>
 		</v-col>
-		<v-col cols="6">
-			<v-btn block color="secondary" @click="cancel">Cancelar</v-btn>
-		</v-col>
-		<v-col cols="6">
+		<v-col cols="12" md="6" class="py-1 order-md-last">
 			<v-btn block color="primary" @click="save">Salvar</v-btn>
+		</v-col>
+		<v-col cols="12" md="6" class="py-1">
+			<v-btn block color="secondary" @click="cancel">Cancelar</v-btn>
 		</v-col>
 	</v-row>
 </template>
 
 <script>
-import { firestore } from 'firebase'
 import { mapGetters } from 'vuex'
 
 import InputPoints from '@/components/Form/InputPoints'
 
 export default {
-	name: 'AppFidelityPointsSearch',
 	data: () => ({
 		routeBase: 'app.fidelity-points',
 		form: {

@@ -23,7 +23,6 @@
 import LayoutCentered from '@/components/Layouts/Centered.vue'
 
 export default {
-	name: 'home',
 	components: {
 		LayoutCentered
 	},

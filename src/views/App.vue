@@ -14,7 +14,6 @@
 import AppLayout from '@/components/Layouts/MenuBarBottom.vue'
 
 export default {
-	name: 'home',
 	components: {
 		AppLayout
 	},

@@ -18,12 +18,12 @@ const routes: RouteConfig[] = [
 	},
 	{
 		path: '/app',
-		name: 'app',
 		beforeEnter: LoggedGuard,
 		component: () => import('../views/App.vue'),
 		children: [
 			{
 				path: '',
+				name: 'app',
 				component: () => import('../views/AppChilds/Index.vue')
 			},
 			{
@@ -71,7 +71,7 @@ const router = new VueRouter({
 	routes
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(({}, {}, next) => {
 	Loading.show()
 	next()
 })

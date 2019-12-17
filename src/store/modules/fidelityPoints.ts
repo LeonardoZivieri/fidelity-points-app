@@ -1,24 +1,23 @@
 
-import { firestore } from 'firebase'
+import { firestore } from 'firebase/app'
 
-import { Module, ActionTree } from 'vuex'
+import { Module } from 'vuex'
 
 import State from '../models/State'
-import Customer from '../models/Customer'
 import CustomerHistory from '../models/CustomerHistory'
 
 const customerModule: Module<State, State> = {
 	getters: {
-		fidelityPointsLoading (store, getters, { fpLoading }) {
+		fidelityPointsLoading ({}, {}, { fpLoading }) {
 			console.log('fidelityPointsLoading: ', fpLoading)
 			return fpLoading
 		},
-		fidelityPointsCustomer (store, getters, { fpCustomer }) {
+		fidelityPointsCustomer ({}, {}, { fpCustomer }) {
 			console.log('fidelityPointsCustomer: ', fpCustomer)
 			return fpCustomer
 		},
-		fidelityPointsCustomerGetCustomerHistory (store, getters, { fpCustomer, user }) {
-			return async (from: number = 0, to: number = 10) => {
+		fidelityPointsCustomerGetCustomerHistory ({}, {}, { fpCustomer, user }) {
+			return async () => {
 				let history: CustomerHistory[] = []
 
 				if (user && fpCustomer) {
@@ -27,7 +26,7 @@ const customerModule: Module<State, State> = {
 						.collection('clients')
 						.doc(user.uid)
 						.collection('history')
-						.doc(fpCustomer.getDocument())
+						.doc(fpCustomer.getTelephone())
 						.collection('story')
 						.orderBy('data', 'desc')
 						.get()
@@ -45,11 +44,11 @@ const customerModule: Module<State, State> = {
 		}
 	},
 	mutations: {
-		fidelityPointsSetLoading (store, newLoadingState) {
+		fidelityPointsSetLoading ({}, newLoadingState) {
 			let state:any = this.state
 			state.fpLoading = newLoadingState
 		},
-		fidelityPointsSetCustomer (store, newCustomerState) {
+		fidelityPointsSetCustomer ({}, newCustomerState) {
 			let state:any = this.state
 			state.fpCustomer = newCustomerState
 		},

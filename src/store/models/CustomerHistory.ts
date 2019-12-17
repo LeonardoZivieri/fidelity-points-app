@@ -1,4 +1,4 @@
-import { firestore } from 'firebase'
+import { firestore } from 'firebase/app'
 
 declare type DocumentData = firestore.DocumentData;
 
@@ -73,15 +73,15 @@ export default class CustomerHistory {
 		this._date = date
 	}
 
-	static fromFirestore (document:string, data: DocumentData|undefined) : CustomerHistory {
+	static fromFirestore (id:string, data: DocumentData|undefined) : CustomerHistory {
 		let client = new CustomerHistory()
 
 		if (data === undefined) {
 			return client
 		}
 
+		client._id = id
 		client.setSaved(true)
-		client._id = document
 		client.setComment(data.comment)
 		client.setPoint(data.point)
 		client.setDate(new Date(data.data))

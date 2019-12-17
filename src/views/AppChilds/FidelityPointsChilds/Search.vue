@@ -2,34 +2,34 @@
 	<v-row>
 		<v-col>
 			<v-text-field
-					v-model="cpf"
-					label="CPF"
-					v-mask="'###.###.###-##'"
+					v-model="telefone"
+					label="Telefone"
+					v-mask="'(##) #####-####'"
 					append-icon="search"
 					@click:append="search"
 					@keyup.enter="search"
 				/>
 		</v-col>
+		<v-col cols="12" class="py-1">
+			<v-btn block color="primary" @click="search">Procurar</v-btn>
+		</v-col>
 	</v-row>
 </template>
 
 <script>
-import { firestore } from 'firebase'
-
 import InputPoints from '@/components/Form/InputPoints'
 
 export default {
-	name: 'AppFidelityPointsSearch',
 	data () {
 		return {
-			cpf: '',
+			telefone: '',
 		}
 	},
 	methods: {
 		async search () {
 			this.$store.commit('fidelityPointsSetLoading', true)
 
-			let customer = await this.$store.dispatch('customerConsult', this.cpf.replace(/[^0-9]/g, ''))
+			let customer = await this.$store.dispatch('customerConsult', this.telefone.replace(/[^0-9]/g, ''))
 			this.$store.commit('fidelityPointsSetCustomer', customer)
 
 			let action = customer.saved ? 'info' : 'edit'

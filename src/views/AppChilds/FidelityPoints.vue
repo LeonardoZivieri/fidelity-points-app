@@ -23,13 +23,11 @@
 </template>
 
 <script>
-import { firestore } from 'firebase'
 import { mapGetters } from 'vuex'
 
 import InputPoints from '@/components/Form/InputPoints'
 
 export default {
-	name: 'AppIndex',
 	computed: mapGetters({
 		'loading': 'fidelityPointsLoading',
 		'customer': 'fidelityPointsCustomer'

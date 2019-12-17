@@ -1,10 +1,10 @@
-import { firestore } from 'firebase'
+import { firestore } from 'firebase/app'
 
 declare type DocumentData = firestore.DocumentData;
 
 export default class Customer {
 	private _saved:boolean = false;
-	private _document:string = '';
+	private _telephone:string = '';
 	private _name:string = '';
 	private _email:string = '';
 	private _birthday:number = 0;
@@ -23,20 +23,20 @@ export default class Customer {
 		this._saved = saved
 	}
 
-	get document (): string {
-		return this._document
+	get telephone (): string {
+		return this._telephone
 	}
-	set document (document:string) {
-		this.setDocument(document)
+	set telephone (telephone:string) {
+		this.setTelephone(telephone)
 	}
-	public getDocument ():string {
-		return this._document
+	public getTelephone ():string {
+		return this._telephone
 	}
-	public setDocument (document:string) {
-		this._document = document
+	public setTelephone (telephone:string) {
+		this._telephone = telephone
 	}
-	public getDocumentFormatted ():string {
-		return this._document.replace(/^([0-9]{3})\.?([0-9]{3})\.?([0-9]{3})-?([0-9]{2})$/, '$1.$2.$3-$4')
+	public getTelephoneFormatted ():string {
+		return this._telephone.replace(/^\(?([0-9]{2})\)?\s?([0-9]{5})-?([0-9]{4})$/, '($1) $2-$3')
 	}
 
 	get name (): string {
@@ -100,15 +100,16 @@ export default class Customer {
 		this._score = score || 0
 	}
 
-	static fromFirestore (document:string, data: DocumentData|undefined) : Customer {
+	static fromFirestore (telephone:string, data: DocumentData|undefined) : Customer {
 		let client = new Customer()
+
+		client.setTelephone(telephone)
 
 		if (data === undefined) {
 			return client
 		}
 
 		client.setSaved(true)
-		client.setDocument(document)
 		client.setName(data.name)
 		client.setEmail(data.email)
 		client.setBirthday(data.birthday)
@@ -119,7 +120,7 @@ export default class Customer {
 
 	static toFirestore (data: Customer) {
 		return {
-			index: data.document,
+			index: data.telephone,
 			data: {
 				'name': data.name,
 				'email': data.email,

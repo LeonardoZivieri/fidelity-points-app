@@ -4,7 +4,7 @@
 			<h2 class="text-center">{{customer.name}}</h2>
 		</v-col>
 		<v-col cols="12" class="py-1">
-			<h3 class="text-center">Documento {{customer.getDocumentFormatted()}}</h3>
+			<h3 class="text-center">Telefone {{customer.getTelephoneFormatted()}}</h3>
 		</v-col>
 		<v-col cols="12" class="py-1">
 			<h3 class="text-center">Pontuação {{customer.getScore()}}</h3>
@@ -25,11 +25,9 @@
 </template>
 
 <script>
-import { firestore } from 'firebase'
 import { mapGetters } from 'vuex'
 
 export default {
-	name: 'AppFidelityPointsInfo',
 	data: () => ({
 		routeBase: 'app.fidelity-points'
 	}),
