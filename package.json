@@ -68,6 +68,7 @@
 				1,
 				"tab"
 			],
+			"no-empty-pattern": 0,
 			"no-tabs": 0
 		},
 		"parserOptions": {
