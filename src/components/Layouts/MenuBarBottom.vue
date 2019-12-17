@@ -47,7 +47,7 @@ export default Vue.extend({
 	name: 'LayoutCentered',
 	data: () => ({
 		drawer: null,
-		activeBtn: null,
+		activeBtn: window.location.pathname,
 	}),
 	methods: {
 		alert (message:string) {
