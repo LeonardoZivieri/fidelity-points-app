@@ -51,10 +51,7 @@ export default {
 	methods: {
 		async loadMore () {
 			this.$store.commit('fidelityPointsSetLoading', true)
-			this.histories = await this.$store.getters.fidelityPointsCustomerGetCustomerHistory(
-				this.histories.length,
-				10,
-			)
+			this.histories = await this.$store.getters.fidelityPointsCustomerGetCustomerHistory()
 			this.$store.commit('fidelityPointsSetLoading', false)
 		}
 	}
