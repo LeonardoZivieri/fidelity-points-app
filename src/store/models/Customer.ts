@@ -36,7 +36,7 @@ export default class Customer {
 		this._telephone = telephone
 	}
 	public getTelephoneFormatted ():string {
-		return this._telephone.replace(/^\(?([0-9]{2})\)?\s?([0-9]{5})\-?([0-9]{4})$/, '($1) $2-$3')
+		return this._telephone.replace(/^\(?([0-9]{2})\)?\s?([0-9]{5})-?([0-9]{4})$/, '($1) $2-$3')
 	}
 
 	get name (): string {
