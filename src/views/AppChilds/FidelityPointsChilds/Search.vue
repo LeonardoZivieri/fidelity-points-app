@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import { firestore } from 'firebase'
-
 import InputPoints from '@/components/Form/InputPoints'
 
 export default {

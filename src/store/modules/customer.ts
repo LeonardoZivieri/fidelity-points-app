@@ -1,5 +1,5 @@
 
-import { firestore } from 'firebase'
+import { firestore } from 'firebase/app'
 
 import { Module, ActionTree } from 'vuex'
 

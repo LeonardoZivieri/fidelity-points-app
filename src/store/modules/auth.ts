@@ -1,4 +1,4 @@
-import { auth, User } from 'firebase'
+import { auth, User } from 'firebase/app'
 
 import Vue from 'vue'
 import { Module, ActionTree } from 'vuex'

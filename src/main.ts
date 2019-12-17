@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
+
 import './registerServiceWorker'
 import './plugins/vue-the-mask'
 import './plugins/vue-moment'
 
 import router from './router'
 import store from './store'
-import firebase from 'firebase'
 import vuetify from './plugins/vuetify'
 
 firebase.initializeApp({

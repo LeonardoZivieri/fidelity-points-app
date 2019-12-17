@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { firestore } from 'firebase'
 import { mapGetters } from 'vuex'
 
 import InputPoints from '@/components/Form/InputPoints'

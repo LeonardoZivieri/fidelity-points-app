@@ -1,5 +1,5 @@
 
-import { User } from 'firebase'
+import { User } from 'firebase/app'
 import Customer from './Customer'
 
 export default class State {
