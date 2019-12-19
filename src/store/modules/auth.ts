@@ -21,6 +21,20 @@ const actions: ActionTree<State, State> = {
 	async authLogout () {
 		return auth().signOut()
 	},
+	async setPassword (
+		store,
+		{oldPassword, newPassword}:{oldPassword:string, newPassword:string}
+	) {
+		let user: User|null = this.state.user
+		if ( user ) {
+			let success = await auth().signInWithEmailAndPassword( user.email || '', oldPassword )
+			return user.updatePassword( newPassword );
+		}
+		throw {
+			'code': 'auth/operation-not-allowed',
+			'message': 'You need to be logged to set the password'
+		}
+	}
 }
 
 const authModule: Module<State, State> = {
