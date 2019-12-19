@@ -8,6 +8,7 @@
 		</v-expansion-panel-header>
 		<v-expansion-panel-content>
 			<v-form ref="changePasswordForm">
+				<loading-indicator v-if="changePasswordLoading"/>
 				<v-row>
 					<v-col cols="12" lg="4">
 						<v-text-field
@@ -80,7 +81,12 @@
 
 <script>
 
+import LoadingIndicator from '@/components/Util/LoadingIndicator.vue'
+
 export default {
+	components: {
+		LoadingIndicator
+	},
 	data: () => ({
 		changePasswordLoading: false,
 		changePasswordError: '',
