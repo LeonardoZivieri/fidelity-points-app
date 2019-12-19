@@ -24,9 +24,17 @@
 				color="primary"
 				height="76"
 			>
+			<v-btn to="/app/home">
+				<span>Home</span>
+				<v-icon>home</v-icon>
+			</v-btn>
 			<v-btn to="/app/fidelity-points">
 				<span>Programa de fidelidade</span>
 				<v-icon>favorite</v-icon>
+			</v-btn>
+			<v-btn to="/app/settings">
+				<span>Configurações</span>
+				<v-icon>settings</v-icon>
 			</v-btn>
 		</v-bottom-navigation>
 	</div>
@@ -39,7 +47,7 @@ export default Vue.extend({
 	name: 'LayoutCentered',
 	data: () => ({
 		drawer: null,
-		activeBtn: null,
+		activeBtn: window.location.pathname,
 	}),
 	methods: {
 		alert (message:string) {
