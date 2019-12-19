@@ -69,6 +69,7 @@
 				"tab"
 			],
 			"no-empty-pattern": 0,
+			"no-throw-literal": 0,
 			"no-tabs": 0
 		},
 		"parserOptions": {

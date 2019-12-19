@@ -18,7 +18,7 @@ const routes: RouteConfig[] = [
 	},
 	{
 		path: '/app',
-        name: 'app',
+		name: 'app',
 		beforeEnter: LoggedGuard,
 		component: () => import('../views/App.vue'),
 		children: [
@@ -29,13 +29,17 @@ const routes: RouteConfig[] = [
 			},
 			{
 				path: 'fidelity-points',
-                name: 'app.fidelity-points',
 				component: () => import('../views/AppChilds/FidelityPoints.vue'),
 				children: [
 					{
 						path: '',
-						name: 'app.fidelity-points.search',
+						name: 'app.fidelity-points',
 						component: () => import('../views/AppChilds/FidelityPointsChilds/Search.vue')
+					},
+					{
+						path: 'search',
+						name: 'app.fidelity-points.search',
+						redirect: '/app/fidelity-points',
 					},
 					{
 						path: 'info',
@@ -61,8 +65,8 @@ const routes: RouteConfig[] = [
 			},
 			{
 				path: 'settings',
-                name: 'app.settings',
-                component: () => import('../views/AppChilds/Settings.vue')
+				name: 'app.settings',
+				component: () => import('../views/AppChilds/Settings.vue')
 			}
 		]
 	},
