@@ -7,6 +7,10 @@ module.exports = {
 		'name': 'App Fidelidade',
 		'themeColor': '#3f51b5',
 		'msTileColor': '#FFFFFF',
-		'appleMobileWebAppCapable': 'yes'
+		'appleMobileWebAppCapable': 'yes',
+		'manifestOptions': {
+			'display': 'fullscreen',
+			'background_color': '#FFFFFF',
+		},
 	}
 }
