@@ -19,6 +19,9 @@
 			<v-btn block color="info" :to="{name: routeBase+'.registry'}">Registrar Evento</v-btn>
 		</v-col>
 		<v-col cols="12" class="py-1">
+			<v-btn block color="info" @click="sendWhatsMessage()">Enviar WhatsApp</v-btn>
+		</v-col>
+		<v-col cols="12" class="py-1">
 			<v-btn block color="secondary" :to="{name: routeBase+'.search'}">Procurar outro cliente</v-btn>
 		</v-col>
 	</v-row>
@@ -29,11 +32,26 @@ import { mapGetters } from 'vuex'
 
 export default {
 	data: () => ({
-		routeBase: 'app.fidelity-points'
+		routeBase: 'app.fidelity-points',
+		whatsappLink: '',
 	}),
 	mounted () {
 		if (this.customer === null) {
 			this.$router.push({ name: this.routeBase + '.search' })
+		}
+		this.whatsappLink = this.getWhatsAppLink()
+	},
+	methods: {
+		sendWhatsMessage () {
+			let url = 'https://api.whatsapp.com/send'
+			url += '?phone=55' + this.customer.telephone
+			url += '&text='
+			if (this.customer.score) {
+				url += encodeURI('Você tem ' + this.customer.score + ' pontos conosco, aproveite')
+			} else {
+				url += encodeURI('Você não tem nenhum ponto')
+			}
+			window.open(url)
 		}
 	},
 	computed: mapGetters({
