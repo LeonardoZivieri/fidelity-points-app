@@ -1,0 +1,7 @@
+{
+  "name": "Zivieri Fidelidade",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

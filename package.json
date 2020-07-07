@@ -5,9 +5,14 @@
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "vue-cli-service build",
-		"lint": "vue-cli-service lint"
+		"lint": "vue-cli-service lint",
+        "ionic:build": "vue-cli-service build",
+        "ionic:serve": "vue-cli-service serve"
 	},
 	"dependencies": {
+		"@capacitor/android": "^2.2.1",
+		"@capacitor/core": "2.2.1",
+		"@ionic/vue": "0.0.4",
 		"@types/vue-the-mask": "^0.11.0",
 		"core-js": "^3.3.2",
 		"firebase": "^7.2.2",
@@ -23,6 +28,7 @@
 		"vuex": "^3.0.1"
 	},
 	"devDependencies": {
+		"@capacitor/cli": "2.2.1",
 		"@fortawesome/fontawesome-free": "^5.11.2",
 		"@vue/cli-plugin-babel": "^4.0.0",
 		"@vue/cli-plugin-eslint": "^4.0.0",
